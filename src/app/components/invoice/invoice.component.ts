@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemService } from 'src/app/services/item.service';
+import { Items } from 'src/app/interfaces/items';
 
 @Component({
   selector: 'app-invoice',
@@ -6,19 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent {
-  items = [
-    { name: 'Item 1', quantity: 1, price: 200 },
-    { name: 'Item 2', quantity: 2, price: 200 },
-    { name: 'Item 3', quantity: 3, price: 300 },
-    { name: 'Item 4', quantity: 4, price: 300 },
-    { name: 'Item 5', quantity: 5, price: 400 },
-    { name: 'Item 6', quantity: 6, price: 400 }
-  ];
+  items: Items[] = [];
   subtotal = 0;
   adjustments = 100;
   total = 0;
 
-  constructor() {
+  constructor(private itemService: ItemService) {
+    this.items = this.itemService.getItems();
     this.subtotal = this.items.reduce((acc, item) => acc + item.quantity * item.price, 0);
     this.total = this.subtotal - this.adjustments;
   }
