@@ -1,0 +1,70 @@
+<!-- <p>invoice works!</p> -->
+<div class="details-container">
+    <h1>Invoice</h1>
+    <h3>Submitted on 01/01/2000</h3>
+        <div class="column left">
+            <h3 id="label">Invoice for</h3>
+            <p>Name</p>
+            <p>Company name</p>
+            <p>Street address</p>
+            <p>City, State, Zip</p>
+        </div>
+    
+        <div class="column middle">
+            <h3 id="label">Payable to</h3>
+            <p id="p-space">Name</p>
+            <h3 id="label">Project</h3>
+            <p>Project name</p>
+        </div>
+    
+        <div class="column right">
+            <h3 id="label">Invoice #</h3>
+            <p id="p-space">123456</p>
+            <h3 id="label">Due date</h3>
+            <p>1/3/2000</p>
+        </div>
+    <div class="border">
+        <h2>a</h2>
+    </div>
+    <br/>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="tr-shade" *ngFor="let item of items">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td><span data-prefix>$</span> {{ item.price }}</td>
+          <td><span data-prefix>$</span> {{ item.quantity * item.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="border"></div>
+    <br/>   
+    <div class="container">
+        <div class="column-footer left">
+            <p>Notes:</p>
+        </div>
+        <div class="column-footer right">
+            <table class="table">
+                <tr>
+                    <th id="label-two">Subtotal </th>
+                    <td><span id="subtotal" data-prefix>$</span><span id="subtotal">{{ subtotal }}</span></td>
+                </tr>
+                <tr>
+                    <th id="label-two">Adjustments </th>
+                    <td><span id="adjustments" data-prefix>-$</span><span id="adjustments">{{ adjustments }}</span></td>
+                </tr>
+                <tr id="right">
+                    <td><span id="total" data-prefix>$</span><span id="total">{{ total }}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+  </div>
